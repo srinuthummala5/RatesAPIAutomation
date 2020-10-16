@@ -21,31 +21,39 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>3.8.1</version>
 			</plugin>
+
 
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.21.0</version>
+				<version>2.18.1</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
 			</plugin>
-
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>2.8.0</version>
+				<version>5.3.0</version>
 				<executions>
 					<execution>
-						<id>execution</id>
-						<phase>verify</phase>
+						<id>report</id>
+						<phase>integration-test</phase>
 						<goals>
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<projectName>CucumberRatesAPI</projectName>
-							<outputDirectory>/cucumber-report-html</outputDirectory>
-							<cucumberOutput>/cucumber.json</cucumberOutput>
+							<outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+							<jsonFiles>
+								<jsonFile>**/*.json</jsonFile>
+							</jsonFiles>
+							<mergeFeaturesWithRetest>true</mergeFeaturesWithRetest>
+							<mergeFeaturesById>true</mergeFeaturesById>
+							<checkBuildResult>false</checkBuildResult>
+							<skipEmptyJSONFiles>true</skipEmptyJSONFiles>
 						</configuration>
 					</execution>
 				</executions>
@@ -58,8 +66,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
+			<version>4.13</version>
 		</dependency>
 
 
@@ -76,6 +83,7 @@
 			<version>6.8.0</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-core</artifactId>
@@ -86,7 +94,6 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-jvm-deps</artifactId>
 			<version>1.0.6</version>
-			<scope>provided</scope>
 		</dependency>
 
 
@@ -94,7 +101,6 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
 			<version>6.8.0</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -113,14 +119,12 @@
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
 			<version>4.2.0</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>json-schema-validator</artifactId>
 			<version>4.2.0</version>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -148,11 +152,14 @@
 			<version>2.8.5</version>
 		</dependency>
 
+
 		<dependency>
 			<groupId>net.masterthought</groupId>
-			<artifactId>cucumber-reporting</artifactId>
-			<version>5.3.1</version>
+			<artifactId>maven-cucumber-reporting</artifactId>
+			<version>5.3.0</version>
 		</dependency>
+
+
 
 	</dependencies>
 </project>

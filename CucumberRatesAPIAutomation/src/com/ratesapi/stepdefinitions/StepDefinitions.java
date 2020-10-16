@@ -38,7 +38,7 @@ public class StepDefinitions {
 		response.then().statusLine(Matchers.containsString("OK"));
 		response.then().body("rates.size()", Matchers.greaterThan(0));
 	}
-	
+
 	@And("Validate Rates are quoted against the Euro by default")
 	public void validate_base_default_to_euro() {
 		response.then().body("base", Matchers.equalTo("EUR"));
@@ -51,26 +51,29 @@ public class StepDefinitions {
 
 	@Then("User validates error message of the response")
 	public void user_validates_error_message_of_the_response() {
+		response.then().statusCode(400);
 		String errorMessage = response.jsonPath().get("error").toString();
 		assertThat(errorMessage, Matchers.equalTo("time data 'api' does not match format '%Y-%m-%d'"));
 	}
 
 	@Then("User validates that the response matches for the current date")
 	public void user_validates_that_the_response_matches_for_the_current_date() {
+		response.then().statusCode(200);
 		String date = response.jsonPath().get("date").toString();
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		String currentDate = dtf.format(LocalDate.now().minusDays(1));
-		assertThat(date, Matchers.equalTo(currentDate));
+		String expectedDate = (date.equals(currentDate)) ? currentDate : dtf.format(LocalDate.now());
+		assertThat(date, Matchers.equalTo(expectedDate));
 	}
-	
+
 	@When("User request for historical record")
 	public void user_request_for_historical_record(DataTable dataTable) {
-		String endPoint = dataTable.cell(1,0);
-		response = request.contentType("application/json").when().get("/"+endPoint);
+		String endPoint = dataTable.cell(1, 0);
+		response = request.contentType("application/json").when().get("/" + endPoint);
 	}
-	
+
 	@When("User request for future rates {string}")
 	public void user_request_for(String endPoint) {
-		response = request.contentType("application/json").when().get("/"+endPoint);
+		response = request.contentType("application/json").when().get("/" + endPoint);
 	}
 }
