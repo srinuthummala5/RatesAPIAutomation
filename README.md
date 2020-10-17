@@ -8,7 +8,7 @@ Execution Details:
 
 Results/Reports : All the reports are generated under reports folder
 
-Manual Test Cases Path: Excel spread sheet placed under resources folder for manual test cases
+Manual Test Cases Path: Excel spread sheet available under resources folder for manual test cases
 
 Test Scenario Coverage Details: Given 6 entry criteria scenarios are covered in 4 scenarious
 
