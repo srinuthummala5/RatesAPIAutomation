@@ -12,14 +12,14 @@ Manual Test Cases Path: Excel spread sheet available for manual test cases in re
 
 Test Scenario Coverage Details: Given 6 entry criteria scenarios are covered in 4 scenarious
 
-Secnario 1: Latest Forign exchange rates for default currency EURO					
+Secnario 1: Latest Forign exchange rates for default currency EURO.					
 Cucumber coverage: Inline passing arguments and BackGround features are covered
 
-Secnario 2: Forign exchange rates for incorrect url									
+Secnario 2: Forign exchange rates for incorrect url.									
 Cucumber coverage: Inline passing arguments and BackGround features are covered
 
-Secnario 3: Forign exchange rates for any historical date														
+Secnario 3: Forign exchange rates for any historical date.														
 Cucumber coverage: data table and BackGround features are covered
 
-Secnario 4: Forign exchange rates for any future date														
+Secnario 4: Forign exchange rates for any future date.														
 Cucumber coverage: scenario outline, Exaples and BackGround features are covered
