@@ -1,6 +1,6 @@
     RatesAPIAutomation
     
-Over View: The framework is designed to automate rates API using cucumber and RESTAPI.
+Over View: The framework is designed to automate rates API using Cucumber and RestAPI.
 
 Execution Details: 
     1. By executing test runner calss as junit (Right click on test runner file -> Run As -> JUnit Test)
@@ -8,7 +8,7 @@ Execution Details:
 
 Results/Reports : All the reports are generated under reports folder
 
-Manual Test Cases Path: Excel spread sheet available for manual test cases in resources folder
+Manual Test Cases Path: Excel spread sheet placed under resources folder for manual test cases
 
 Test Scenario Coverage Details: Given 6 entry criteria scenarios are covered in 4 scenarious
 
